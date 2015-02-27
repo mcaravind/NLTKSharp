@@ -7,12 +7,14 @@ namespace StemmerTest
     [TestClass]
     public class UnitTest1
     {
+        
+
         [TestMethod]
-        public void TestMethod1()
+        public void TestStemming()
         {
-            string word = "enumerate";
-            int measure = Stemmer.GetWordMeasure(word);
-            Assert.AreEqual(4,measure);
+            string word = "caresses";
+            string stemmed = Stemmer.GetStem(word);
+            Assert.AreEqual(stemmed,"caress");
         }
     }
 }
