@@ -19,6 +19,11 @@ namespace NLTKSharp
             for (int i = 0; i < input.Length; i++)
             {
                 char ch = input[i];
+                char nextChar=' ';
+                if (i < input.Length - 1)
+                {
+                    nextChar = input[i + 1];
+                }
                 if (ch == ' ')
                 {
                     lastSpaceIndex = i;
@@ -67,7 +72,7 @@ namespace NLTKSharp
                         }
                         else
                         {
-                            char nextChar = input[i + 1];
+                            
                             char nextNonWhitespaceChar = input[i + nextNonWhitespaceCharDist+1];
                             if (char.IsUpper(nextNonWhitespaceChar) || nextChar == '\r' || nextChar == '\n')
                             {
@@ -78,7 +83,14 @@ namespace NLTKSharp
                             }
                         }
                     }
-
+                    if (nextChar == ')' && char.IsNumber(ch))
+                    {
+                        //This is of the form 1) 2) etc.
+                        
+                        result.Add(sb.ToString().TrimEnd(ch));
+                        sb = new StringBuilder();
+                        sb.Append(ch);
+                    }
                 }
             }
             result.Add(sb.ToString());
