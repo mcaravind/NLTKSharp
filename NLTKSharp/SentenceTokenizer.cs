@@ -10,7 +10,7 @@ namespace NLTKSharp
 {
     public static class SentenceTokenizer
     {
-        static string[] knownAbbreviations = new string[]{"etc.","mr.","mrs."};
+        static string[] knownAbbreviations = new string[]{"etc.","mr.","mrs.","vs."};
         public static List<string> Tokenize(string input)
         {
             List<string> result = new List<string>();
@@ -72,9 +72,13 @@ namespace NLTKSharp
                         }
                         else
                         {
-                            
                             char nextNonWhitespaceChar = input[i + nextNonWhitespaceCharDist+1];
-                            if (char.IsUpper(nextNonWhitespaceChar) || nextChar == '\r' || nextChar == '\n')
+                            char secondNonWhitespaceChar = ' ';
+                            if (input.Length >= i + nextNonWhitespaceCharDist + 3)
+                            {
+                               secondNonWhitespaceChar = input[i + nextNonWhitespaceCharDist + 2];
+                            }
+                            if (char.IsUpper(nextNonWhitespaceChar) || nextChar == '\r' || nextChar == '\n'||(nextChar=='-'&&char.IsUpper(secondNonWhitespaceChar)))
                             {
                                 //next character is uppercase
                                 //likely eos
@@ -90,6 +94,11 @@ namespace NLTKSharp
                         result.Add(sb.ToString().TrimEnd(ch));
                         sb = new StringBuilder();
                         sb.Append(ch);
+                    }
+                    if (ch == '.' && nextChar == '-')
+                    {
+                        result.Add(sb.ToString());
+                        sb = new StringBuilder();
                     }
                 }
             }
