@@ -61,6 +61,34 @@ namespace NLTKSharp.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Rank	   Word	Part of speech	Frequency	Dispersion
+        ///1	   the	a	22038615	0.98
+        ///2	   be	v	12545825	0.97
+        ///3	   and	c	10741073	0.99
+        ///4	   of	i	10343885	0.97
+        ///5	   a	a	10144200	0.98
+        ///6	   in	i	6996437	0.98
+        ///7	   to	t	6332195	0.98
+        ///8	   have	v	4303955	0.97
+        ///9	   to	i	3856916	0.99
+        ///10	   it	p	3872477	0.96
+        ///11	   I	p	3978265	0.93
+        ///12	   that	c	3430996	0.97
+        ///13	   for	i	3281454	0.98
+        ///14	   you	p	3081151	0.92
+        ///15	   he	p	2909254	0.94
+        ///16	   with	i	2683014	0.99
+        ///17	   on	i	2485306	0.99
+        ///18	   do	v	2573587	0.95
+        ///19	   sa [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string _5000words {
+            get {
+                return ResourceManager.GetString("_5000words", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to the	9243		(definite article, adverb)
         ///of	5220		(preposition, auxiliary verb)
         ///and	5196		(conjunction)
